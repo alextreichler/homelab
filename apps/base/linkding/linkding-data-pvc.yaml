@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: linkding-data-pvc
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  eersistentVolumeReclaimPolicy: Retain
+  storageClassName: "" 
