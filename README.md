@@ -1,5 +1,11 @@
 # Homelab Cluster
 
+
+![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Argo CD](https://img.shields.io/badge/argo-EF7B4D.svg?style=for-the-badge&logo=argo&logoColor=white)
+![Talos](https://img.shields.io/badge/Talos%20Linux-gray.svg?style=for-the-badge)
+![GitOps](https://img.shields.io/badge/GitOps-yellow.svg?style=for-the-badge)
+
 This is my personal homelab repo. This cluster is used to host interesting projects that I personally use as well as a tool for learning new processes and keeping my skills with Kuberentes updated and sharp as opposed to using Virtual Machines. Although a lot of organizations use and continue to use VM's, Kubernetes always seems to be something that is good to know and develop in skills as it is a common way for organizations to run their applications.
 
 ## Infra/Tools
