@@ -27,7 +27,7 @@ spec:
           envFrom:
 #            - configMapRef:
 #                name: linkding-configmap
-            -  secretKeyRef:
+            -  secretRef:
                   name: linkding-container-env
       volumes:
         - name: linkding-data
