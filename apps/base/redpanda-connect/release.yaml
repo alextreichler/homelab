@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: connect
-      version: "4.*"
+      version: "*"
       sourceRef:
         kind: HelmRepository
         name: redpanda-connect
