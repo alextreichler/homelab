@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: redpanda-connect
 resources:
   - ../../base/redpanda-connect/
+  - redpanda-connect-configmap.yaml

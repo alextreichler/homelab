@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  pipeline.yaml: |
+    config:
+      input:
+        generate:
+          interval: 1s
+          count: 0  # Setting count to 0 ensures it generates data indefinitely.
+          mapping: |
+            root.message = "Hello, Redpanda Connect!"
+      pipeline:
+        processors:
+          - mapping: |
+              root.message = this.uppercase()
+      output:
+        stdout: {}
+kind: ConfigMap
+metadata:
+  name: pipeline-config
