@@ -3,15 +3,12 @@ data:
   pipeline.yaml: |
     config:
       input:
-        generate:
-          interval: 1s
-          count: 0  # Setting count to 0 ensures it generates data indefinitely.
-          mapping: |
-            root.message = "Hello, Redpanda Connect!"
-      pipeline:
-        processors:
-          - mapping: |
-              root.message = this.uppercase()
+        label: ""
+        websocket:
+          url: wss://ws.tradier.com/v1/markets/events
+          auto_replay_nacks: true
+          open_message: '{"sessionid": "TOBEADDED", "symbols": ["AAPL", "SPY"]}'
+          open_message_type: text
       output:
         stdout: {}
 kind: ConfigMap
