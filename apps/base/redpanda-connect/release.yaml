@@ -18,9 +18,9 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
-  valuesFrom:
-    - kind: ConfigMap
-      name: pipeline-config
-      valuesKey: pipeline.yaml
-
-
+  #valuesFrom:
+  #  - kind: ConfigMap
+  #    name: pipeline-config
+  #    valuesKey: pipeline.yaml
+  values:
+    tradier_session: "REPLACE_WITH_SECRET" # Placeholder

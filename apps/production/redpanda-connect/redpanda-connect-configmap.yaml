@@ -1,4 +1,7 @@
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pipeline-config
 data:
   pipeline.yaml: |
     config:
@@ -7,11 +10,8 @@ data:
         websocket:
           url: wss://ws.tradier.com/v1/markets/events
           auto_replay_nacks: true
-          open_message: '{"sessionid": "{{.tradier_session}}", "symbols": ["AAPL", "SPY"]}'
+          open_message: '{"sessionid": "{{ default .Values.tradier_session (lookup "v1" "Secret" .Release.Namespace "tradier-session-secret").data.sessionid | base64decode }}", "symbols": ["AAPL", "SPY"]}'
           open_message_type: text
       output:
         stdout: {}
-kind: ConfigMap
-metadata:
-  name: pipeline-config
 
