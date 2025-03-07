@@ -6,12 +6,10 @@ data:
   pipeline.yaml: |
     config:
       input:
-        generate:
-          interval: 2s
-          mapping: |
-            root = env("SESSION_ID")
-
-      output:
-        stdout:
-          codec: lines
+        label: ""
+        websocket:
+          url: wss://ws.tradier.com/v1/markets/events
+          auto_replay_nacks: true
+          open_message: '{"sessionid": "${SESSION_ID}", "symbols": ["AAPL", "SPY"]}'
+          open_message_type: text
 
