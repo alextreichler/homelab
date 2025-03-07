@@ -25,4 +25,4 @@ spec:
   values:
     envFrom:
     - secretRef:
-        name: redpanda-connect-tradier-container-env-secret.yaml
+        name: redpanda-connect-tradier-container-env-secret
