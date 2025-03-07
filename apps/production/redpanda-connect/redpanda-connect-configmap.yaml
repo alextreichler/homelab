@@ -7,10 +7,11 @@ data:
         websocket:
           url: wss://ws.tradier.com/v1/markets/events
           auto_replay_nacks: true
-          open_message: '{"sessionid": "TOBEADDED", "symbols": ["AAPL", "SPY"]}'
+          open_message: '{"sessionid": "{{.tradier_session}}", "symbols": ["AAPL", "SPY"]}'
           open_message_type: text
       output:
         stdout: {}
 kind: ConfigMap
 metadata:
   name: pipeline-config
+
