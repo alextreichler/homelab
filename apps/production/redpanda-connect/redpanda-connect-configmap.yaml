@@ -6,12 +6,12 @@ data:
   pipeline.yaml: |
     config:
       input:
-        label: ""
-        websocket:
-          url: wss://ws.tradier.com/v1/markets/events
-          auto_replay_nacks: true
-          open_message: '{"sessionid": "{{ default .Values.tradier_session (lookup "v1" "Secret" .Release.Namespace "tradier-session-secret").data.sessionid | base64decode }}", "symbols": ["AAPL", "SPY"]}'
-          open_message_type: text
+        generate:
+          interval: 2s
+          mapping: |
+            root = env("SESSION_ID")
+
       output:
-        stdout: {}
+        stdout:
+          codec: lines
 
