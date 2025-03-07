@@ -4,3 +4,4 @@ namespace: redpanda-connect
 resources:
   - ../../base/redpanda-connect/
   - redpanda-connect-configmap.yaml
+  - redpanda-connect-tradier-container-env-secret.yaml
