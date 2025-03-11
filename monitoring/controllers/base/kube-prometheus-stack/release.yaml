@@ -34,15 +34,7 @@ spec:
       ingress:
         enabled: true
         ingressClassName: traefik
-        rules:
-          - host: grafana.neon.toys
-            http:
-              paths:
-                - backend:
-                    service:
-                      name: grafana
-                      port:
-                        number: 3000
-                  path: /
-                  pathType: Prefix
+
+        hosts:
+          - grafana.neon.toys
 
