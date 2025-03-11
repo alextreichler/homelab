@@ -31,3 +31,18 @@ spec:
   values:
     grafana:
       adminPassword: alex
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        rules:
+          - host: grafana.neon.toys
+            http:
+              paths:
+                - backend:
+                    service:
+                      name: grafana
+                      port:
+                        number: 8080
+                  path: /
+                  pathType: Prefix
+
