@@ -38,3 +38,4 @@ spec:
         hosts:
           - grafana.neon.toys
 
+        tls: []
