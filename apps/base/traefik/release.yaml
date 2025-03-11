@@ -17,3 +17,8 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
+  values:
+    service:
+      type: LoadBalancer
+      annotations:
+        metallb.universe.tf/address-pool: ubiquiti-pool
