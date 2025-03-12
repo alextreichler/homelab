@@ -31,10 +31,10 @@ spec:
   values:
     grafana:
       adminPassword: alex
-      ingress:
-        enabled: true
-        ingressClassName: traefik
-
-        hosts:
-          - grafana.neon.toys
-        tls: []
+ #     ingress:
+ #       enabled: true
+ #       ingressClassName: traefik
+#
+#        hosts:
+#          - grafana.neon.toys
+#        tls: []
