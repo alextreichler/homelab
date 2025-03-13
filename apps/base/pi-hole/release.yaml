@@ -38,4 +38,4 @@ spec:
       type: LoadBalancer
       annotations:
         metallb.universe.tf/address-pool: ubiquiti-pool
-      adminPassword: "alex"
+    adminPassword: "alex"
