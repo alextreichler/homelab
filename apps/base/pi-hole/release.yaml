@@ -6,11 +6,11 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: mojo2600
+      chart: pihole
       version: "*"
       sourceRef:
         kind: HelmRepository
-        name: mojo2600
+        name: pi-hole
         namespace: pi-hole 
       interval: 12h
   install:
