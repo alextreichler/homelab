@@ -1,0 +1,41 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: pie-hole
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: mojo2600
+      version: "*"
+      sourceRef:
+        kind: HelmRepository
+        name: mojo2600
+        namespace: pi-hole 
+      interval: 12h
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  values:
+    ingress:
+      enabled: true
+      hosts:
+      - pihole.neon.toys
+    doh:
+      enabled: true
+      pullPolicy: Always
+      envVars: {
+        DOH_UPSTREAM: "https://1.1.1.1/dns-query"
+       }
+    serviceDns:
+      loadBalancerIP: 192.168.1.249
+      type: LoadBalancer
+      annotations:
+        metallb.universe.tf/address-pool: ubiquiti-pool
+    serviceWeb:
+      loadBalancerIP: 192.168.1.249
+      type: LoadBalancer
+      annotations:
+        metallb.universe.tf/address-pool: ubiquiti-pool
+      adminPassword: "alex"
