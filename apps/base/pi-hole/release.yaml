@@ -29,7 +29,7 @@ spec:
         DOH_UPSTREAM: "https://1.1.1.1/dns-query"
        }
     serviceDns:
-      loadBalancerIP: 192.168.1.249
+      loadBalancerIP: 192.168.1.248
       type: LoadBalancer
       annotations:
         metallb.universe.tf/address-pool: ubiquiti-pool
