@@ -44,3 +44,14 @@ spec:
         metallb.universe.tf/address-pool: ubiquiti-pool
         
     adminPassword: alex
+
+    extraEnvVars:
+      - name: DNSMASQ_LISTENING
+        value: "all"
+    
+    dnsmasq:
+      enableCustomDnsMasq: true
+      customSettings: |
+        listen-address=0.0.0.0
+        bind-interfaces
+        localnet=192.168.1.0/24
