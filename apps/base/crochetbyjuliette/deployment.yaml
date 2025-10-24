@@ -27,9 +27,9 @@ spec:
               value: "33" 
             - name: PGID
               value: "33" 
-          envFrom:
-            - secretRef:
-                name: crochetbyjuliette-container-env
+#          envFrom:
+#            - secretRef:
+#                name: crochetbyjuliette-container-env
       volumes:
         - name: crochetbyjuliette-data
           persistentVolumeClaim:
