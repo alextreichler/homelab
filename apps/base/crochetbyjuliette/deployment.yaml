@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crochetbyjuliette
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crochetbyjuliette
+  template:
+    metadata:
+      labels:
+        app: crochetbyjuliette
+    spec:
+      securityContext:
+        fsGroup: 33
+      containers:
+        - name: crochetbyjuliette
+          image: linuxserver/grav
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: crochetbyjuliette-data
+              mountPath: /config 
+          env:
+            - name: PUID
+              value: "33" 
+            - name: PGID
+              value: "33" 
+          envFrom:
+            - secretRef:
+                name: crochetbyjuliette-container-env
+      volumes:
+        - name: crochetbyjuliette-data
+          persistentVolumeClaim:
+            claimName: crochetbyjuliette-data-pvc
