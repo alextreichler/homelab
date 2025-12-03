@@ -5,7 +5,7 @@ metadata:
 spec:
   ports:
     - port: 80 
-      targetPort: 80 
+      targetPort: 8585 
   selector:
     app: crochetbyjuliette
   type: ClusterIP

@@ -1,36 +1,48 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: crochetbyjuliette
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: crochetbyjuliette
-  template:
-    metadata:
-      labels:
-        app: crochetbyjuliette
-    spec:
-      securityContext:
-        fsGroup: 33
-      containers:
-        - name: crochetbyjuliette
-          image: linuxserver/grav
-          ports:
-            - containerPort: 80
-          volumeMounts:
-            - name: crochetbyjuliette-data
-              mountPath: /config 
-          env:
-            - name: PUID
-              value: "33" 
-            - name: PGID
-              value: "33" 
-#          envFrom:
-#            - secretRef:
-#                name: crochetbyjuliette-container-env
-      volumes:
-        - name: crochetbyjuliette-data
-          persistentVolumeClaim:
-            claimName: crochetbyjuliette-data-pvc
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: crochetbyjuliette
+   spec:
+     replicas: 1
+     selector:
+       matchLabels:
+         app: crochetbyjuliette
+     template:
+       metadata:
+         labels:
+           app: crochetbyjuliette
+       spec:
+         containers:
+           - name: crochetbyjuliette
+             image: ghcr.io/alextreichler/crochetbyjuliette:latest
+             imagePullPolicy: Always
+             ports:
+               - containerPort: 8585
+             env:
+               - name: PORT
+                 value: "8585"
+               - name: DB_PATH
+                 value: "/app/data/crochet.db"
+               - name: CSRF_KEY
+                 valueFrom:
+                   secretKeyRef:
+                     name: crochetbyjuliette-secrets
+                     key: csrf-key
+               - name: SESSION_KEY
+                 valueFrom:
+                   secretKeyRef:
+                     name: crochetbyjuliette-secrets
+                     key: session-key
+             volumeMounts:
+               # Mount the DB directory
+               - name: crochetbyjuliette-data
+                 mountPath: /app/data
+                 subPath: data
+               # Mount the uploads directory
+               - name: crochetbyjuliette-data
+                 mountPath: /app/static/uploads
+                 subPath: uploads
+         volumes:
+           - name: crochetbyjuliette-data
+             persistentVolumeClaim:
+               claimName: crochetbyjuliette-data-pvc

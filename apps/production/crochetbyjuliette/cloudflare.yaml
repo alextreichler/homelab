@@ -62,9 +62,8 @@ data:
     no-autoupdate: true
 
     ingress:
-      # This rule points your domain to your new Grav service
       - hostname: crochetbyjuliette.com
-        service: http://crochetbyjuliette.juliette:80
+        service: http://crochetbyjuliette:80
 
       # This is a good rule for debugging
       - hostname: hello.crochetbyjuliette.com
