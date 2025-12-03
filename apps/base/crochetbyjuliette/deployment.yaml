@@ -13,7 +13,7 @@
            app: crochetbyjuliette
        spec:
          imagePullSecrets:
-           name: ghcr-secret
+           - name: ghcr-secret
          containers:
            - name: crochetbyjuliette
              image: ghcr.io/alextreichler/crochetbyjuliette:latest
