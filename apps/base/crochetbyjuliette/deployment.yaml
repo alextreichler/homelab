@@ -16,7 +16,7 @@
            - name: ghcr-secret
          containers:
            - name: crochetbyjuliette
-             image: ghcr.io/alextreichler/crochetbyjuliette:v1.0.1
+             image: ghcr.io/alextreichler/crochetbyjuliette:v1.0.2
              imagePullPolicy: Always
              ports:
                - containerPort: 8585
