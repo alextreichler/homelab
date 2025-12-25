@@ -1,0 +1,48 @@
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: alextreichler 
+   spec:
+     replicas: 1
+     selector:
+       matchLabels:
+         app: personal-website 
+     template:
+       metadata:
+         labels:
+           app: personal-website
+       spec:
+         imagePullSecrets:
+           - name: ghcr-secret
+         containers:
+           - name: personal-website
+             image: ghcr.io/alextreichler/personal-website:v1.0.0
+             imagePullPolicy: Always
+             ports:
+               - containerPort: 6060
+             env:
+               - name: PORT
+                 value: "6060"
+               - name: DB_PATH
+                 value: "/app/data/treichler.db"
+               - name: UPLOAD_PATH 
+                 value: "/app/web/static/uploads"
+               - name: SESSION_KEY
+                 valueFrom:
+                   secretKeyRef:
+                     name: website-secrets
+                     key: session-secret
+             volumeMounts:
+               # Mount the DB directory
+               - name: data-volume
+                 mountPath: /app/data
+               # Mount the uploads directory
+               - name: upload-volume
+                 mountPath: /app/web/static/uploads
+         volumes:
+           - name: data-volume
+             persistentVolumeClaim:
+               claimName: website-data-pvc
+           - name: upload-volume
+             persistentVolumeClaim:
+               claimName: website-uploads-pvc
