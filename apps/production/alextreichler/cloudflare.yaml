@@ -63,7 +63,7 @@ data:
 
     ingress:
       - hostname: alextreichler.com
-        service: http://alextreichler:80
+        service: http://alextreichler:6060
 
       # This is a good rule for debugging
       - hostname: hello.alextreichler.com
