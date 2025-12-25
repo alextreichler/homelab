@@ -36,13 +36,12 @@
                # Mount the DB directory
                - name: data-volume
                  mountPath: /app/data
+                 subPath: data
                # Mount the uploads directory
                - name: upload-volume
                  mountPath: /app/web/static/uploads
+                 subPath: uploads
          volumes:
            - name: data-volume
              persistentVolumeClaim:
                claimName: website-data-pvc
-           - name: upload-volume
-             persistentVolumeClaim:
-               claimName: website-uploads-pvc
