@@ -4,8 +4,8 @@ metadata:
   name: alextreichler
 spec:
   ports:
-    - port: 80 
-      targetPort: 8585 
+    - port: 6060 
+      targetPort: 6060 
   selector:
-    app: alextreichler
+    app: personal-website 
   type: ClusterIP
