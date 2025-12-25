@@ -29,7 +29,7 @@
                  value: "/app/data/treichler.db"
                - name: UPLOAD_PATH 
                  value: "/app/web/static/uploads"
-               - name: SESSION_KEY
+               - name: SESSION_SECRET
                  valueFrom:
                    secretKeyRef:
                      name: website-secrets
