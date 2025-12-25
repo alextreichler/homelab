@@ -38,7 +38,7 @@
                  mountPath: /app/data
                  subPath: data
                # Mount the uploads directory
-               - name: upload-volume
+               - name: data-volume
                  mountPath: /app/web/static/uploads
                  subPath: uploads
          volumes:
