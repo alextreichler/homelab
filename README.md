@@ -40,7 +40,7 @@ The structure is based on the recommended way by FluxCD [FluxCD Repo Structure](
 
 ## Hardware
 
-Currently I have a 3 node cluster. Two Think Centre computers I purchased from Ebay and an Intel Nuc I have had for many years. The Intel Nuc has more RAM than the others, so I am using it as a worker node that could potentially run larger work loads. I also have an older PC with a Intel Arch 750 GPU, which I plan to add to the cluster at a future point.
+Currently I have a 3 node cluster. Two Think Centre computers I purchased from Ebay and an Intel Nuc I have had for many years. The Intel Nuc has more RAM than the others, so I am using it as a worker node that could potentially run larger work loads. I also have an older PC with a Intel Arch 750 GPU, which I plan to add to the cluster at a future point in time.
 
 
 ControlPlane: 
