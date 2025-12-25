@@ -21,8 +21,10 @@
              ports:
                - containerPort: 6060
              env:
+               - name: APP_ENV 
+                 value: "production"
                - name: PORT
-                 value: "6060"
+                 value: ":6060"
                - name: DB_PATH
                  value: "/app/data/treichler.db"
                - name: UPLOAD_PATH 
