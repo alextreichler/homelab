@@ -63,7 +63,7 @@ data:
     ingress:
       # Your main app
       - hostname: k8svis.neon.toys
-        service: http://k8svis:8090
+        service: http://k8svis.neon.svc.cluster.local:8090
 
       # This rule catches all other traffic
       - service: http_status:404
