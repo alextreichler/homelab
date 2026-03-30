@@ -52,7 +52,7 @@ metadata:
 data:
   config.yaml: |
     # Name of the tunnel you want to run
-    tunnel: neon-toys  # ← Your tunnel name
+    tunnel: ldpi  # ← Your tunnel name
 
     credentials-file: /etc/cloudflared/creds/credentials.json
 
@@ -62,10 +62,6 @@ data:
 
     ingress:
       # Your main app
-      - hostname: neon.toys
-        service: http://neon-toys:8090
-
-      # Your k8svis subdomain
       - hostname: k8svis.neon.toys
         service: http://k8svis:8090
 
