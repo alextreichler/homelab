@@ -16,7 +16,7 @@
            - name: ghcr-secret
          containers:
            - name: k8s-visualizer 
-             image: ghcr.io/alextreichler/k8svisualizer:1.0.6
+             image: ghcr.io/alextreichler/k8svisualizer:1.2.0
              imagePullPolicy: Always
              ports:
                - containerPort: 8090
