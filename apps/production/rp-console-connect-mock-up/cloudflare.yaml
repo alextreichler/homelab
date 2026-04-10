@@ -63,7 +63,7 @@ data:
     ingress:
       # Your main app
       - hostname: connect.neon.toys
-        service: http://connect.neon.svc.cluster.local:5656
+        service: http://rp-mockup.neon.svc.cluster.local:5656
 
       # This rule catches all other traffic
       - service: http_status:404
