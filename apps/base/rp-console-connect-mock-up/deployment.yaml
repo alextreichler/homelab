@@ -1,0 +1,27 @@
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: rp-mockup 
+   spec:
+     replicas: 1
+     selector:
+       matchLabels:
+         app: rp-mockup 
+     template:
+       metadata:
+         labels:
+           app: rp-mockup 
+       spec:
+         imagePullSecrets:
+           - name: ghcr-secret
+         containers:
+           - name: rp-mockup 
+             image: ghcr.io/alextreichler/rp-console-connect-mock-up:1.0.0 
+             imagePullPolicy: Always
+             ports:
+               - containerPort: 5656
+             env:
+               - name: READ_ONLY 
+                 value: "false"
+               - name: ALLOWED_ORIGINS 
+                 value: ""
