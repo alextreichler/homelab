@@ -16,7 +16,7 @@
            - name: ghcr-secret
          containers:
            - name: rp-mockup 
-             image: ghcr.io/alextreichler/rp-console-connect-mock-up:latest 
+             image: ghcr.io/alextreichler/rp-console-connect-mock-up:1.0.0 
              imagePullPolicy: Always
              ports:
                - containerPort: 5656
