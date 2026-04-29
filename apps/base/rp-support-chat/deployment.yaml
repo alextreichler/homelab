@@ -22,7 +22,7 @@ spec:
         - name: ghcr-pull-secret
       containers:
         - name: rp-support-chat
-          image: ghcr.io/alextreichler/rp-support-chat:0.1.10
+          image: ghcr.io/alextreichler/rp-support-chat:0.1.11
           imagePullPolicy: Always
           ports:
             - containerPort: 7432
