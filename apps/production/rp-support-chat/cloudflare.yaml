@@ -70,4 +70,6 @@ data:
     ingress:
       - hostname: chat.neon.toys
         service: http://rp-support-chat:7432
+      - hostname: propertytracker.neon.toys
+        service: http://property-tracker:7777
       - service: http_status:404

@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: property-tracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: property-tracker
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: property-tracker
+    spec:
+      securityContext:
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      imagePullSecrets:
+        - name: ghcr-pull-secret
+      containers:
+        - name: property-tracker
+          image: ghcr.io/alextreichler/property-tracker:0.1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7777
+          env:
+            - name: DATA_DIR
+              value: /data
+            - name: PORT
+              value: "7777"
+            - name: HOME
+              value: /tmp
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: tmp
+              mountPath: /tmp
+          securityContext:
+            runAsUser: 65532
+            runAsGroup: 65532
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 7777
+            initialDelaySeconds: 5
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 7777
+            initialDelaySeconds: 3
+            periodSeconds: 10
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: property-tracker-data
+        - name: tmp
+          emptyDir: {}
