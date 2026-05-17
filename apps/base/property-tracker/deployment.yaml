@@ -22,7 +22,7 @@ spec:
         - name: ghcr-pull-secret
       containers:
         - name: property-tracker
-          image: ghcr.io/alextreichler/property-tracker:0.2.3
+          image: ghcr.io/alextreichler/property-tracker:0.2.4
           imagePullPolicy: Always
           ports:
             - containerPort: 7777
