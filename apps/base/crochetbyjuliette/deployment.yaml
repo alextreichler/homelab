@@ -12,8 +12,6 @@
          labels:
            app: crochetbyjuliette
        spec:
-         imagePullSecrets:
-           - name: ghcr-secret
          containers:
            - name: crochetbyjuliette
              image: ghcr.io/alextreichler/crochetbyjuliette:v1.0.6
